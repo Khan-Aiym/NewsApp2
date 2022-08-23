@@ -17,7 +17,9 @@
     android:id="@+id/click"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:text="photo"/>
+    android:text="photo" />
+
+
 
 
 
