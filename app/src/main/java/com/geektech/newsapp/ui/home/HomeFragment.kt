@@ -19,7 +19,11 @@ class HomeFragment : Fragment() {
     // This property is only valid between onCreateView and
     // onDestroyView.
     private val binding get() = _binding!!
-
+private lateinit var adapter: NewsAdapter
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        adapter=NewsAdapter()
+    }
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -38,14 +42,20 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.fab.setOnClickListener{
-          findNavController().navigate(R.id.newsFragment)
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.newsFragment)
         }
-        parentFragmentManager.setFragmentResultListener("rk_news", viewLifecycleOwner) { requestKey, bundle ->
+        parentFragmentManager.setFragmentResultListener(
+            "rk_news",
+            viewLifecycleOwner
+        ) { requestKey, bundle ->
             val news = bundle.getSerializable("news") as News
+            adapter.addItem(news)
             //val text = bundle.getString("text")
             Log.e("Home", "text:${news.title}")
             Log.e("Home", "news:$news")
         }
+
+        binding.recyclerView.adapter = adapter
     }
 }
