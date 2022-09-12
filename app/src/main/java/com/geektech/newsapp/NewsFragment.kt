@@ -11,16 +11,20 @@ import com.geektech.newsapp.models.News
 
 
 class NewsFragment : Fragment() {
+
     private lateinit var binding: FragmentNewsBinding
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View?{
         binding = FragmentNewsBinding.inflate(inflater, container, false)
-        // Inflate the layout for this fragment
         return binding.root
     }
+
+        // Inflate the layout for this fragment
+
+
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -31,7 +35,6 @@ class NewsFragment : Fragment() {
 
     private fun save() {
         val text = binding.editText.text.toString()
-
         val news = News(text, System.currentTimeMillis())
         val bundle = Bundle()
         bundle.putSerializable("news", news)

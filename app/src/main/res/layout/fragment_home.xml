@@ -7,10 +7,10 @@
     tools:context=".ui.home.HomeFragment">
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+        android:id="@+id/recyclerView"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
-
         android:layout_width="match_parent"
+        tools:listitem="@layout/item_news"
         android:layout_height="match_parent"/>
 
 <com.google.android.material.floatingactionbutton.FloatingActionButton
